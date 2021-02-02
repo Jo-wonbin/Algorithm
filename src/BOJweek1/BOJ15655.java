@@ -1,11 +1,12 @@
-package BojProblem;
+package BOJweek1;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class BOJ15656 {
+public class BOJ15655 {
 
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -37,11 +38,11 @@ public class BOJ15656 {
 				temp2 = list[i-1];
 				copy[cnt] = temp2; // 숫자를  list 배열에 넣음 cnt = 0일 때 첫번째 배열에 넣을 문자처리
 				
-				check[i]=false; // 같은 숫자 들어갈 수 있게 함
+				//check[i]=false; // 같은 숫자 들어갈 수 있게 함
 				
-				dfs(cnt+1,1); // 
+				dfs(cnt+1,i+1); // 
 				
-				//check[i] = false;
+				check[i] = false;
 				
 			}
 		

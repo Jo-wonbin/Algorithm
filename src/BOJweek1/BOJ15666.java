@@ -1,11 +1,11 @@
-package BojProblem;
+package BOJweek1;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class BOJ15665 {
+public class BOJ15666 {
 
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -44,9 +44,9 @@ public class BOJ15665 {
 				
 					check[i]=false; // 같은 숫자 들어갈 수 있게 함
 				
-					dfs(cnt+1, 1); // 
+					dfs(cnt+1, i); // 
 				
-					check[i] = false;
+					//check[i] = false;
 				
 				
 			}

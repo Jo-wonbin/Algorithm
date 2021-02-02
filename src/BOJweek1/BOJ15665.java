@@ -1,12 +1,11 @@
-package BojProblem;
-
+package BOJweek1;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class BOJ15663 {
+public class BOJ15665 {
 
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -16,7 +15,7 @@ public class BOJ15663 {
 	static int copy[];
 	static boolean check[];
 	
-	static void dfs(int cnt) throws IOException {
+	static void dfs(int cnt, int num) throws IOException {
 		
 		if(cnt == m) {
 			
@@ -32,7 +31,7 @@ public class BOJ15663 {
 		
 		int before = 0; // 비교값 생성
 		
-		for(int i=1; i<=n; i++) {
+		for(int i=num; i<=n; i++) {
 			
 			if(!check[i] && (i == 0 || before != list[i-1])) {// 중복이거나 다시 반복 이전의 값이 반복되지 않으면 통과
 				
@@ -43,9 +42,9 @@ public class BOJ15663 {
 					temp2 = list[i-1];
 					copy[cnt] = temp2; // 숫자를  list 배열에 넣음 cnt = 0일 때 첫번째 배열에 넣을 문자처리
 				
-				//check[i]=false; // 같은 숫자 들어갈 수 있게 함
+					check[i]=false; // 같은 숫자 들어갈 수 있게 함
 				
-					dfs(cnt+1); // 
+					dfs(cnt+1, 1); // 
 				
 					check[i] = false;
 				
@@ -91,7 +90,7 @@ public class BOJ15663 {
 		
 		check = new boolean[9];
 		//list = new int [9];
-		dfs(0);
+		dfs(0,1);
 		
 		br.close();
 		bw.flush();

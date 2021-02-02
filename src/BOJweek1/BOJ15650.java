@@ -1,11 +1,11 @@
-package BojProblem;
+package BOJweek1;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class BOJ15649 {
+public class BOJ15650 {
 
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -13,32 +13,33 @@ public class BOJ15649 {
 	static int list[];
 	static boolean check[];
 	
-	static void dfs(int cnt) throws IOException {
+	static void dfs(int cnt, int num) throws IOException {
 		
 		if(cnt == m) {
 			
 			for(int i=0; i<m; i++) {
 				
-					bw.write(list[i]+"");
-					if(i !=m-1) {
-						bw.write(" ");
-					}
-				
+					bw.write(list[i]+" ");
+					
 			}
 			
 			bw.write("\n");
 			return;
 		}
 		
-		for(int i=1; i<=n; i++) {
+		for(int i=num; i<=n; i++) {
 			
-			if(check[i]) continue; // 중복이면 다시 반복
+			if(!check[i]) {// 중복이면 다시 반복
 				
-				check[i] = true; // 방문한 배열처리
-				list[cnt] = i; // 숫자를  list 배열에 넣음
-				dfs(cnt+1); // 다시 dfs 시작
+				check[i] = true; // 방문한 배열을 중복처리
+				
+				list[cnt] = i; // 숫자를  list 배열에 넣음 cnt = 0일 때 첫번째 배열에 넣을 문자처리
+				
+				dfs(cnt+1, i+1); // 다시 dfs 시작
+				
 				check[i] = false;
-			
+				
+			}
 		
 		}
 		
@@ -55,7 +56,7 @@ public class BOJ15649 {
 		
 		check = new boolean[9];
 		list = new int [9];
-		dfs(0);
+		dfs(0,1);
 		
 		bw.flush();
 		bw.close();
