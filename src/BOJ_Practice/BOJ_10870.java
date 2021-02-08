@@ -12,7 +12,7 @@ public class BOJ_10870 {
 		int n = sc.nextInt();
 		
 		System.out.println(fibonacci(n));
-		
+		sc.close();
 	}
 	
 	

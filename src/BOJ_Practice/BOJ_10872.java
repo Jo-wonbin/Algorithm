@@ -12,6 +12,7 @@ public class BOJ_10872 {
 		int n = sc.nextInt();
 		
 		System.out.println(factorial(n));
+		sc.close();
 	}
 
 	

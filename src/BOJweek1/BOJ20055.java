@@ -74,6 +74,7 @@ public class BOJ20055 {
 		}
 		
 		System.out.println(cnt);
+		bw.close();
 	}
 
 }
