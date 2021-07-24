@@ -17,7 +17,7 @@ class rgb {
 	}
 }
 
-public class BOJ_10026_Àû·Ï»ö¾à {
+public class BOJ_10026_ì ë¡ìƒ‰ì•½ {
 	static int n, result;
 	static int map[][];
 	static boolean check[][];

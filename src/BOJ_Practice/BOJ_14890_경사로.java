@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class BOJ_14890_°æ»ç·Î {
+public class BOJ_14890_ê²½ì‚¬ë¡œ {
 	static int n, l, result = 0;
 	static int map[][];
 	static int temp[];

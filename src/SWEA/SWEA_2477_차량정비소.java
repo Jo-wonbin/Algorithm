@@ -37,7 +37,7 @@ class car implements Comparable<car> {
 	}
 }
 
-public class SWEA_2477_Â÷·®Á¤ºñ¼Ò {
+public class SWEA_2477_ì°¨ëŸ‰ì •ë¹„ì†Œ {
 
 	static int n, m, k, anum, bnum, result;
 	static int a[], b[];

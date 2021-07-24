@@ -8,7 +8,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.StringTokenizer;
 
-public class BOJ_16235_³ª¹«ÀçÅ×Å© {
+public class BOJ_16235_ë‚˜ë¬´ì¬í…Œí¬ {
 	static int n, m, k, result;
 	static int map[][];
 	static int robot[][];
@@ -65,7 +65,7 @@ public class BOJ_16235_³ª¹«ÀçÅ×Å© {
 	static void start() {
 		while (k-- > 0) {
 			int dead[][] = new int[n + 1][n + 1];
-			for (int i = 1; i <= n; i++) { // º½
+			for (int i = 1; i <= n; i++) { // ï¿½ï¿½
 				for (int j = 1; j <= n; j++) {
 					int c = q[i][j].size();
 					for (int h = 0; h < c; h++) {
@@ -80,13 +80,13 @@ public class BOJ_16235_³ª¹«ÀçÅ×Å© {
 
 				}
 			}
-			for (int i = 1; i <= n; i++) { // ¿©¸§
+			for (int i = 1; i <= n; i++) { // ï¿½ï¿½ï¿½ï¿½
 				for (int j = 1; j <= n; j++) {
 					map[i][j] += dead[i][j];
 				}
 			}
 
-			for (int i = 1; i <= n; i++) { // °¡À»
+			for (int i = 1; i <= n; i++) { // ï¿½ï¿½ï¿½ï¿½
 				for (int j = 1; j <= n; j++) {
 					for (int tree : q[i][j]) {
 						if (tree % 5 == 0) {
@@ -103,7 +103,7 @@ public class BOJ_16235_³ª¹«ÀçÅ×Å© {
 				}
 			}
 
-			for (int i = 1; i <= n; i++) { // °Ü¿ï
+			for (int i = 1; i <= n; i++) { // ï¿½Ü¿ï¿½
 				for (int j = 1; j <= n; j++) {
 					map[i][j] += robot[i][j];
 				}

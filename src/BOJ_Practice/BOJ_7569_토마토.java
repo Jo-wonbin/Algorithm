@@ -18,7 +18,7 @@ class tmt {
 	}
 }
 
-public class BOJ_7569_Åä¸¶Åä {
+public class BOJ_7569_í† ë§ˆí†  {
 	static int n, m, z, result;
 	static int map[][][];
 	static int check[][][];

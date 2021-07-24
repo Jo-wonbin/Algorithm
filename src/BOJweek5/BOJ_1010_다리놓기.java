@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class BOJ_1010_´Ù¸®³õ±â {
+public class BOJ_1010_ë‹¤ë¦¬ë†“ê¸° {
 
 	static int list[][];
 	

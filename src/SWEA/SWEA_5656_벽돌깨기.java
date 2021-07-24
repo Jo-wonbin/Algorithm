@@ -18,7 +18,7 @@ class rock {
 	}
 }
 
-public class SWEA_5656_º®µ¹±ú±â {
+public class SWEA_5656_ë²½ëŒê¹¨ê¸° {
 	static int down, n, m, result;
 	static int map[][];
 	static int copy[][];
@@ -89,7 +89,7 @@ public class SWEA_5656_º®µ¹±ú±â {
 				check[now.x][now.y] = true;
 			}
 
-			for (int h = 0; h < 4; h++) {// size 2ÀÌ»ó
+			for (int h = 0; h < 4; h++) {// size 2ï¿½Ì»ï¿½
 				for (int i = 1; i < now.size; i++) {
 					int nx = now.x + (i * dx[h]);
 					int ny = now.y + (i * dy[h]);

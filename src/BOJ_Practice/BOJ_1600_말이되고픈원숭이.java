@@ -19,7 +19,7 @@ class mk {
 	}
 }
 
-public class BOJ_1600_¸»ÀÌµÇ°íÇÂ¿ø¼şÀÌ {
+public class BOJ_1600_ë§ì´ë˜ê³ í”ˆì›ìˆ­ì´ {
 
 	static int n, m, k, result = -1;
 	static int map[][];

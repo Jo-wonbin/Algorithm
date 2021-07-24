@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class BOJ_1987_¾ËÆÄºª {
+public class BOJ_1987_ì•ŒíŒŒë²³ {
 	static int n, m, max = Integer.MIN_VALUE;
 	static char map[][];
 	static boolean check[];
@@ -41,7 +41,7 @@ public class BOJ_1987_¾ËÆÄºª {
 	}
 
 	static void dfs(int x, int y, int size) {
-		check[map[x][y] - 'A'] = true;// ¾Æ½ºÅ°ÄÚµå·Î ÇØ´ç ¾ËÆÄºªÀÇ À§Ä¡¿¡ Ã¼Å©
+		check[map[x][y] - 'A'] = true;// ï¿½Æ½ï¿½Å°ï¿½Úµï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ Ã¼Å©
 		for (int h = 0; h < 4; h++) {
 			int nx = x + dx[h];
 			int ny = y + dy[h];

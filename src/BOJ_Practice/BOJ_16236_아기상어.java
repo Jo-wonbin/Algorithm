@@ -54,7 +54,7 @@ class shark implements Comparable<shark> {
 	}
 }
 
-public class BOJ_16236_¾Æ±â»ó¾î {
+public class BOJ_16236_ì•„ê¸°ìƒì–´ {
 	static int n, result = 0, SS = 0;
 	static int map[][];
 	static int check[][];

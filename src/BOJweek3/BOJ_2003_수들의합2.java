@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class BOJ_2003_¼öµéÀÇÇÕ2 {
+public class BOJ_2003_ìˆ˜ë“¤ì˜í•©2 {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub

@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class BOJ_2606_¹ÙÀÌ·¯½º {
+public class BOJ_2606_ë°”ì´ëŸ¬ìŠ¤ {
 	static int num, n, result = 0;
 	static ArrayList<Integer> al[];
 	static boolean check[];
@@ -25,7 +25,7 @@ public class BOJ_2606_¹ÙÀÌ·¯½º {
 		al = new ArrayList[num + 1];
 		check = new boolean[num + 1];
 		for (int i = 1; i <= num; i++) {
-			al[i] = new ArrayList<Integer>(); // ¹è¿­ ¾È¿¡ ¹è¿­ »ı¼º
+			al[i] = new ArrayList<Integer>(); // ï¿½è¿­ ï¿½È¿ï¿½ ï¿½è¿­ ï¿½ï¿½ï¿½ï¿½
 		}
 
 		st = new StringTokenizer(br.readLine());

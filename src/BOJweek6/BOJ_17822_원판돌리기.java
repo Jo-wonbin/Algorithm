@@ -17,7 +17,7 @@ class rol {
 	}
 }
 
-public class BOJ_17822_¿øÆÇµ¹¸®±â {
+public class BOJ_17822_ì›íŒëŒë¦¬ê¸° {
 	static int n, m, k, result = 0;
 	static int map[][];
 	static boolean check[][];

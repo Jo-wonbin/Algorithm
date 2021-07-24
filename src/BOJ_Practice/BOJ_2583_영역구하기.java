@@ -19,7 +19,7 @@ class pp {
 	}
 }
 
-public class BOJ_2583_¿µ¿ª±¸ÇÏ±â {
+public class BOJ_2583_ì˜ì—­êµ¬í•˜ê¸° {
 	static int n, m, k, result;
 	static int map[][];
 	static boolean check[][];

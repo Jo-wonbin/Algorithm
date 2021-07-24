@@ -17,7 +17,7 @@ class area {
 	}
 }
 
-public class BOJ_2468_¾ÈÀü¿µ¿ª {
+public class BOJ_2468_ì•ˆì „ì˜ì—­ {
 	static int n, result;
 	static int map[][];
 	static boolean check[][];

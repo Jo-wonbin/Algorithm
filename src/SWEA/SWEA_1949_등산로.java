@@ -19,7 +19,7 @@ class p {
 	}
 }
 
-public class SWEA_1949_µî»ê·Î {
+public class SWEA_1949_ë“±ì‚°ë¡œ {
 
 	static int n, k, result, max;
 	static int map[][];
