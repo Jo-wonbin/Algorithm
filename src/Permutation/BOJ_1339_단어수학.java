@@ -3,14 +3,15 @@ package Permutation;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.StringTokenizer;
 
 public class BOJ_1339_단어수학 {
 
     static int N;
-    static int arr[];
-    static char voca[][];
-    static boolean chk[];
+    static int alpha[];
+    static String voca[];
     static int answer;
 
     public static void main(String[] args) throws IOException {
@@ -20,67 +21,33 @@ public class BOJ_1339_단어수학 {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         N = Integer.parseInt(st.nextToken());
-        arr = new int[10];
-        voca = new char[N][8];
-        chk = new boolean[10];
+
+        voca = new String[N];
+        alpha = new int[26];
+        for (int i = 0; i < N; i++) {
+            voca[i] = br.readLine();
+        }
+
+        for (int i = 0; i < N; i++) {   // 자릿수만 계산하여 알바벳 배열에 합산
+            int temp = (int) Math.pow(10, voca[i].length() - 1);
+            for (int j = 0; j < voca[i].length(); j++) {
+                alpha[(int) voca[i].charAt(j) - 65] += temp;
+                temp /= 10;
+            }
+        }
+
+        Arrays.sort(alpha); // 오름차순 정렬
+        int num = 9;
+
         answer = 0;
 
-        for (int i = 0; i < N; i++) {
-            st = new StringTokenizer(br.readLine());
-            String temp = st.nextToken();
-            for (int j = 0; j < temp.length(); j++) {
-                voca[i][j] = temp.charAt(j);
-            }
-
+        for (int i = alpha.length - 1; i >= 0; i--) {   // 제일 큰 값부터 9~0 인덱스 주기
+            if (alpha[i] == 0)
+                break;
+            answer += num * alpha[i];
+            num--;
         }
 
-        Permutation(0);
         System.out.println(answer);
-
-        br.close();
     }
-
-    static void Permutation(int cnt) {
-
-        if (cnt == N) {
-            int temp = 0;
-
-            for (int i = 0; i < N; i++) {
-
-                int count = 0;
-                for (int j = 0; j < 8; j++) {
-                    if (voca[i][j] == '\0')
-                        break;
-                    count++;
-                }
-
-                if (count == 0)
-                    continue;
-
-                int ten = count;
-                for (int j = 0; j < count; j++) {
-                    int num = voca[i][j] - 65;
-                    if (arr[num] == 0)
-                        continue;
-                    int a = (int) Math.pow(10, ten - 1);
-                    temp += (arr[num] * a);
-                    ten--;
-                }
-
-            }
-            answer = Math.max(answer, temp);
-
-            return;
-        }
-
-        for (int i = 9; i >= 0; i--) {
-            if (chk[i])
-                continue;
-            arr[cnt] = i;
-            chk[i] = true;
-            Permutation(cnt + 1);
-            chk[i] = false;
-        }
-    }
-
 }
