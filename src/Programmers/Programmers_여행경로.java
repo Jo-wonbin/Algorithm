@@ -25,10 +25,13 @@ public class Programmers_여행경로 {
         }
 
         for (int i = 0; i < tickets.length; i++) {
+
             if (check[i])
                 continue;
+
             if (!airport.equals(tickets[i][0]))
                 continue;
+
             airportList.append(tickets[i][1]).append(" ");
             check[i] = true;
             dfs(tickets, cnt + 1, tickets[i][1]);
