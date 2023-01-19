@@ -87,13 +87,11 @@ public class Main {
             return;
 
         for (int i = now; i < N * N; i++) {
-            if (map[i % N][i / N] == 'S' || map[i % N][i / N] == 'T')
-                continue;
             if (map[i % N][i / N] == 'X') {
                 map[i % N][i / N] = 'O';
+                Comb(cnt + 1, i + 1);
+                map[i % N][i / N] = 'X';
             }
-            Comb(cnt + 1, i + 1);
-            map[i % N][i / N] = 'X';
         }
     }
 }
