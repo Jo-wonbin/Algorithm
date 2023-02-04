@@ -12,19 +12,19 @@ class Main {
         int N = Integer.parseInt(br.readLine());
 
         int tripleSix = 666;
-        String temp = "";
         while (N > 0) {
-            temp = "" + tripleSix++;
+            String temp = "" + tripleSix++;
 
             if (temp.contains("666")) {
                 N--;
             }
+            if (N == 0)
+                System.out.println(temp);
         }
-
-        System.out.println(temp);
 
         br.close();
 
     }
+
 
 }
