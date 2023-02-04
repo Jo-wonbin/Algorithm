@@ -1,36 +1,30 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.StringTokenizer;
 
-public class Main {
-	
-	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+class Main {
 
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		int n = Integer.parseInt(st.nextToken());
-		
-		int evil = 666;
-		int count = 0;
-		
-		while(count != n) {
-			String a = "" + evil;
-			
-			if(a.contains("666")) {
-				count++;
-			}
-			evil++;
-		}
-		
-		bw.write(evil-1+"");
-		
-		br.close();
-		bw.flush();
-		bw.close();
-	}
+
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int N = Integer.parseInt(br.readLine());
+
+        int tripleSix = 666;
+        String temp = "";
+        while (N > 0) {
+            temp = "" + tripleSix++;
+
+            if (temp.contains("666")) {
+                N--;
+            }
+        }
+
+        System.out.println(temp);
+
+        br.close();
+
+    }
 
 }
