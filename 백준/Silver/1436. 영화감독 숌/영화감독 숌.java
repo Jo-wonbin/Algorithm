@@ -18,9 +18,8 @@ class Main {
             if (temp.contains("666")) {
                 N--;
             }
-            if (N == 0)
-                System.out.println(temp);
         }
+        System.out.println(tripleSix-1);
 
         br.close();
 
