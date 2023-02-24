@@ -1,57 +1,57 @@
-
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.util.*;
 
-public class Main {
+class Main {
+    static int N;
+    static char map[][];
 
-	static char a[][];
-	
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		
-		StringBuilder sb = new StringBuilder();
-		int n = Integer.parseInt(br.readLine());
-		
-		a = new char[n+1][n+1];
-		
-		for(int i=0; i<n; i++ ) {
-			for(int j=0; j<n; j++) {
-				a[i][j] = ' ';
-			}
-		}
-		
-		star(n, 0, 0);
-		for(int i=0; i<n; i++ ) {
-			for(int j=0; j<n; j++) {
-				sb.append(a[i][j]);
-			}
-			sb.append("\n");
-		}
-		bw.write(sb.toString());
-		bw.flush();
-		bw.close();
-	}
+    public static void main(String[] args) throws IOException {
 
-	static void star(int n, int x, int y) {
-		
-		if(n==1) {
-			a[x][y] = '*';       // n=1이면 그 위치에 *넣고 반환
-			return;
-		}
-		n/=3;      // n은 n/3
-		for(int i=0; i<3; i++) {
-			for(int j=0; j<3; j++) {
-				if(i==1 && j==1) continue; 
-					star(n, i*n+x, j*n+y);
-				
-			}
-		}
-	}
-	
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        N = Integer.parseInt(br.readLine());
+        map = new char[N][N];
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                map[i][j] = ' ';
+            }
+        }
+
+        drawingStar(N, 0, 0);
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                sb.append(map[i][j]);
+            }
+            sb.append("\n");
+        }
+
+        System.out.println(sb);
+
+        br.close();
+
+    }
+
+    static void drawingStar(int length, int x, int y) {
+
+        if (length == 1) {
+            map[x][y] = '*';
+            return;
+        }
+        int nowLength = length / 3;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i == 1 && j == 1) continue;
+                drawingStar(nowLength, i * nowLength + x, j * nowLength + y);
+            }
+        }
+
+    }
+
 }
