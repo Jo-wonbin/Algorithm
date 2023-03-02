@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.StringTokenizer;
 
 class Main {
@@ -13,51 +14,30 @@ class Main {
         int N = Integer.parseInt(br.readLine());
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int arr[] = new int[N];
+        HashSet<Integer> set = new HashSet<>();
         for (int i = 0; i < N; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
+            set.add(Integer.parseInt(st.nextToken()));
         }
 
         int M = Integer.parseInt(br.readLine());
 
-        st = new StringTokenizer(br.readLine());
-        int list[] = new int[M];
-        for (int i = 0; i < M; i++) {
-            list[i] = Integer.parseInt(st.nextToken());
-        }
-
-        Arrays.sort(arr);
-
         StringBuilder sb = new StringBuilder();
-
+        
+        st = new StringTokenizer(br.readLine());
         for (int i = 0; i < M; i++) {
-            int temp = list[i];
-
-            int left = 0;
-            int right = N - 1;
-            boolean flag = false;
-            while (left <= right) {
-                int mid = (left + right) / 2;
-
-                if (arr[mid] < temp) {
-                    left = mid + 1;
-                } else if (arr[mid] > temp) {
-                    right = mid - 1;
-                } else {
-                    flag = true;
-                    break;
-                }
-
-            }
-            if (flag) {
+            int temp = Integer.parseInt(st.nextToken());
+            if(set.contains(temp)){
                 sb.append(1).append("\n");
-            } else {
+            }else{
                 sb.append(0).append("\n");
             }
-
         }
 
-        System.out.print(sb.toString());
+
+
+        
+        
+        System.out.print(sb);
 
         br.close();
 
