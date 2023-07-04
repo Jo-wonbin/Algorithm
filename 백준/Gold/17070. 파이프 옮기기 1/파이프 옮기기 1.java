@@ -6,7 +6,6 @@ import java.util.*;
 public class Main {
 
     static int N, result, map[][];
-    static boolean visited[][];
     static int dx[] = {0, 1, 1};
     static int dy[] = {1, 0, 1};
 
@@ -19,7 +18,6 @@ public class Main {
         N = Integer.parseInt(st.nextToken());
 
         map = new int[N + 1][N + 1];
-        visited = new boolean[N + 1][N + 1];
 
         for (int i = 1; i <= N; i++) {
             st = new StringTokenizer(br.readLine());
@@ -30,6 +28,7 @@ public class Main {
         result = 0;
 
         dfs(1, 2, 0);
+
         System.out.println(result);
 
         br.close();
