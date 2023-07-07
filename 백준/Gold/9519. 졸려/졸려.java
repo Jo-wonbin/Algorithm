@@ -18,13 +18,12 @@ public class Main {
         Set<String> set = new HashSet<>();
         set.add(word);
         int cnt = 1;
-        boolean flag = true;
-        for (int i = 0; i < X; i++) {
-            word = front.toString();
+
+        while (cnt <= X) {
+
+            char[] temp = front.toString().toCharArray();
             front.setLength(0);
             back.setLength(0);
-
-            char[] temp = word.toCharArray();
 
             for (int j = 0; j < temp.length; j++) {
                 if (j % 2 == 0) {
@@ -35,30 +34,13 @@ public class Main {
             }
             front.append(back.reverse());
             if (set.contains(front.toString())) {
-                flag = false;
-                break;
+                X = X % cnt;
+                cnt = 1;
+                continue;
             }
             cnt++;
         }
-        if (!flag) {
-            X = X % cnt;
-            for (int i = 0; i < X; i++) {
-                word = front.toString();
-                front.setLength(0);
-                back.setLength(0);
 
-                char[] temp = word.toCharArray();
-
-                for (int j = 0; j < temp.length; j++) {
-                    if (j % 2 == 0) {
-                        front.append(temp[j]);
-                    } else {
-                        back.append(temp[j]);
-                    }
-                }
-                front.append(back.reverse());
-            }
-        }
         System.out.println(front);
         br.close();
     }
