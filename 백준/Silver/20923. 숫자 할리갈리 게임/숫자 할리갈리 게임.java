@@ -45,11 +45,11 @@ public class Main {
                 groundOfSuyeon.add(topOfSuyeon);
             }
 
-            if (dodo.size() == 0) {
+            if (dodo.isEmpty()) {
                 System.out.println("su");
                 return;
             }
-            if (suyeon.size() == 0) {
+            if (suyeon.isEmpty()) {
                 System.out.println("do");
                 return;
             }
