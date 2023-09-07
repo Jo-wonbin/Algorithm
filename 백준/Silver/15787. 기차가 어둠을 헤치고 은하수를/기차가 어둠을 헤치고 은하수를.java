@@ -16,32 +16,28 @@ public class Main {
 
         ArrayList<ArrayList<Integer>> lists = new ArrayList<>();
 
-        int temp[] = new int[20];
-
-        for (int i = 0; i < N; i++) {
-            ArrayList<Integer> tp = (ArrayList<Integer>) (Arrays.stream(temp).boxed().collect(Collectors.toList()));
-            lists.add(tp);
-        }
+        int trains[] = new int[N];
 
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
             int order = Integer.parseInt(st.nextToken());
             int numberOfTrain = Integer.parseInt(st.nextToken()) - 1;
-            int target = 0;
-            if (st.hasMoreTokens()) {
-                target = Integer.parseInt(st.nextToken()) - 1;
-            }
+
 
             if (order == 1) {
-                lists.get(numberOfTrain).set(target, 1);
+                int target = Integer.parseInt(st.nextToken()) - 1;
+                trains[numberOfTrain] |= (1 << target);
             } else if (order == 2) {
-                lists.get(numberOfTrain).set(target, 0);
+                int target = Integer.parseInt(st.nextToken()) - 1;
+                trains[numberOfTrain] &= ~(1 << target);
             } else if (order == 3) {
-                lists.get(numberOfTrain).remove(lists.get(numberOfTrain).size() - 1);
-                lists.get(numberOfTrain).add(0, 0);
+                if ((trains[numberOfTrain] & (1 << 19)) != 0)
+                    trains[numberOfTrain] &= ~(1 << 19);
+                trains[numberOfTrain] <<= 1;
             } else {
-                lists.get(numberOfTrain).remove(0);
-                lists.get(numberOfTrain).add(0);
+                if ((trains[numberOfTrain] & 1) != 0)
+                    trains[numberOfTrain] &= ~1;
+                trains[numberOfTrain] >>= 1;
             }
         }
 
@@ -49,16 +45,10 @@ public class Main {
         int result = 0;
 
         for (int i = 0; i < N; i++) {
-            int binary = 0;
-            for (int j = 0; j < 20; j++) {
-                if (lists.get(i).get(j) == 0)
-                    continue;
-                binary += (int) Math.pow(2, 19 - j);
-            }
-            if (!set.contains(binary)) {
+            if (!set.contains(trains[i])) {
                 result++;
             }
-            set.add(binary);
+            set.add(trains[i]);
         }
 
         System.out.println(result);
