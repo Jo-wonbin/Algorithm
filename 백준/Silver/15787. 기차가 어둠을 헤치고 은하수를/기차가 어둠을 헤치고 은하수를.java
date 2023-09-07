@@ -37,7 +37,7 @@ public class Main {
             } else if (order == 2) {
                 lists.get(numberOfTrain).set(target, 0);
             } else if (order == 3) {
-                lists.get(numberOfTrain).remove(lists.get(numberOfTrain).size()-1);
+                lists.get(numberOfTrain).remove(lists.get(numberOfTrain).size() - 1);
                 lists.get(numberOfTrain).add(0, 0);
             } else {
                 lists.get(numberOfTrain).remove(0);
@@ -45,18 +45,20 @@ public class Main {
             }
         }
 
-        Set<String> set = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
         int result = 0;
 
         for (int i = 0; i < N; i++) {
-            StringBuilder sb = new StringBuilder();
+            int binary = 0;
             for (int j = 0; j < 20; j++) {
-                sb.append(lists.get(i).get(j));
+                if (lists.get(i).get(j) == 0)
+                    continue;
+                binary += (int) Math.pow(2, 19 - j);
             }
-            if (!set.contains(sb.toString())) {
+            if (!set.contains(binary)) {
                 result++;
             }
-            set.add(sb.toString());
+            set.add(binary);
         }
 
         System.out.println(result);
