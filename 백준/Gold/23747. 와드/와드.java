@@ -13,12 +13,12 @@ public class Main {
         }
     }
 
-    static char map[][];
     static int row, col;
+    // 순서대로 상/하/좌/우/가운데
     static int dx[] = {-1, 1, 0, 0, 0};
     static int dy[] = {0, 0, -1, 1, 0};
-    static boolean ward[][];
-    static boolean isVisited[][];
+    static char map[][];
+    static boolean visiblePoint[][];
     static Queue<Point> q = new LinkedList<>();
     static Queue<Point> points = new LinkedList<>();
 
@@ -30,9 +30,10 @@ public class Main {
         row = Integer.parseInt(st.nextToken());
         col = Integer.parseInt(st.nextToken());
 
+        // 구역을 저장할 배열
         map = new char[row][col];
-        ward = new boolean[row][col];
-        isVisited = new boolean[row][col];
+        // 시야가 보이는 곳을 저장할 배열
+        visiblePoint = new boolean[row][col];
 
         for (int i = 0; i < row; i++) {
             String temp = br.readLine();
@@ -43,6 +44,7 @@ public class Main {
         }
 
         st = new StringTokenizer(br.readLine());
+        // 시작 인덱스
         int x = Integer.parseInt(st.nextToken()) - 1;
         int y = Integer.parseInt(st.nextToken()) - 1;
 
@@ -53,7 +55,7 @@ public class Main {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                if (isVisited[i][j]) {
+                if (visiblePoint[i][j]) {
                     sb.append('.');
                 } else
                     sb.append('#');
@@ -65,9 +67,13 @@ public class Main {
         br.close();
     }
 
+    // 와드를 설치한 곳과 같은 구역을 돌아다니며 시야를 밝혀주는 메소드
     private static void bfs(int x, int y, char alpa) {
+
         points.add(new Point(x, y));
-        isVisited[x][y] = true;
+        visiblePoint[x][y] = true;
+
+        // 사방 탐색을 하면서 와드가 설치된 곳과 같은 구역 찾기
         while (!points.isEmpty()) {
             Point now = points.poll();
 
@@ -77,17 +83,18 @@ public class Main {
 
                 if (nx < 0 || ny < 0 || nx >= row || ny >= col)
                     continue;
-                if (isVisited[nx][ny])
+                if (visiblePoint[nx][ny])
                     continue;
                 if (map[nx][ny] != alpa)
                     continue;
 
-                isVisited[nx][ny] = true;
+                visiblePoint[nx][ny] = true;
                 points.add(new Point(nx, ny));
             }
         }
     }
 
+    // 돌아다니며 와드를 박는 메소드
     private static void warding(int startX, int startY, String way) {
         q.add(new Point(startX, startY));
 
@@ -96,11 +103,14 @@ public class Main {
 
             Point now = q.poll();
 
+            // 다음에 움직일 방향
             char dir = way.charAt(index);
             int intDir = 4;
             switch (dir) {
                 case 'W':
-                    bfs(now.x, now.y, map[now.x][now.y]);
+                    // 방향이 와드면 같은 구역에 와드를 설치함
+                    if (!visiblePoint[now.x][now.y])
+                        bfs(now.x, now.y, map[now.x][now.y]);
                     break;
                 case 'U':
                     intDir = 0;
@@ -116,12 +126,14 @@ public class Main {
                     break;
 
             }
+            // 다음 좌표를 큐에 넣고 갱신해줌.
             q.add(new Point(now.x + dx[intDir], now.y + dy[intDir]));
 
             index++;
 
         }
 
+        // 마지막 위치에서는 상/하/좌/우/가운데 방향을 볼 수 있게 처리
         Point lastPoint = q.poll();
         for (int i = 0; i < 5; i++) {
             int nx = lastPoint.x + dx[i];
@@ -129,7 +141,7 @@ public class Main {
 
             if (nx < 0 || ny < 0 || nx >= row || ny >= col)
                 continue;
-            isVisited[nx][ny] = true;
+            visiblePoint[nx][ny] = true;
         }
     }
 }
