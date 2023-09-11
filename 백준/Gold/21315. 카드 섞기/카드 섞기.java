@@ -7,8 +7,6 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    static ArrayList<Integer> nonMixedCard = new ArrayList<>();
-
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,6 +20,7 @@ public class Main {
             answer[i] = Integer.parseInt(st.nextToken());
         }
 
+        ArrayList<Integer> nonMixedCard = new ArrayList<>();
         int num = 1;
         while (num <= N) {
             nonMixedCard.add(num++);
@@ -33,17 +32,17 @@ public class Main {
         int maxK = possibleMixing(N);
 
         for (int i = 1; i <= maxK; i++) {
-            firstMixedCard = mixed2_K(i, N, (ArrayList<Integer>) nonMixedCard.clone());
+            firstMixedCard = mixed2_K_ver2(i, N, (ArrayList<Integer>) nonMixedCard.clone());
 
             for (int j = 1; j <= maxK; j++) {
-                lastMixedCard = mixed2_K(j, N, (ArrayList<Integer>) firstMixedCard.clone());
-                boolean flag = true;
+                lastMixedCard = mixed2_K_ver2(j, N, (ArrayList<Integer>) firstMixedCard.clone());
+                boolean isEquals = true;
                 for (int z = 0; z < N; z++) {
                     if (answer[z] != lastMixedCard.get(z)) {
-                        flag = false;
+                        isEquals = false;
                     }
                 }
-                if (flag) {
+                if (isEquals) {
                     System.out.println(i + " " + j);
                     return;
                 }
@@ -62,6 +61,26 @@ public class Main {
             cnt--;
         }
         return cnt;
+    }
+
+    private static ArrayList<Integer> mixed2_K_ver2(int K, int N, ArrayList<Integer> card) {
+
+        ArrayList<Integer> result = new ArrayList<>();
+        int cnt = 1;
+        int index = N - 1;
+        result.add(card.get(N - 1));
+        while (cnt <= K) {
+            int mixedCardListSize = (int) Math.pow(2, cnt);
+            for (int i = N - mixedCardListSize; i < index; i++) {
+                result.add(card.get(i));
+            }
+            index = N - mixedCardListSize;
+            cnt++;
+        }
+        for (int i = 0; i < index; i++) {
+            result.add(card.get(i));
+        }
+        return result;
     }
 
     private static ArrayList<Integer> mixed2_K(int K, int N, ArrayList<Integer> card) {
