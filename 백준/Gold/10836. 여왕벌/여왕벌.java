@@ -22,27 +22,30 @@ public class Main {
 
         houseOfBee = new int[M][M];
 
-        ArrayList<Integer> growth = new ArrayList<>();
-
+        int growth[] = new int[2 * M - 1];
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             int zero = Integer.parseInt(st.nextToken());
             int one = Integer.parseInt(st.nextToken());
             int two = Integer.parseInt(st.nextToken());
 
-            for (int j = 0; j < zero; j++)
-                growth.add(0);
-            for (int j = 0; j < one; j++)
-                growth.add(1);
-            for (int j = 0; j < two; j++)
-                growth.add(2);
+            int index = zero;
+            int cnt = 0;
+            while (cnt < one) {
+                growth[index] += 1;
+                index++;
+                cnt++;
+            }
+            cnt = 0;
+            while (cnt < two) {
+                growth[index] += 2;
+                index++;
+                cnt++;
+            }
 
-
-            firstGrowUp(growth);
-
-            growth.clear();
         }
 
+        firstGrowUp(growth);
         secondGrowUp();
 
         StringBuilder sb = new StringBuilder();
@@ -58,14 +61,14 @@ public class Main {
         br.close();
     }
 
-    private static void firstGrowUp(ArrayList<Integer> growth) {
+    private static void firstGrowUp(int growth[]) {
         int x = M - 1;
         int y = 0;
 
         int index = 0;
         while (index < 2 * M - 1) {
 
-            houseOfBee[x][y] += growth.get(index);
+            houseOfBee[x][y] += growth[index];
 
             if (x == 0) {
                 y++;
