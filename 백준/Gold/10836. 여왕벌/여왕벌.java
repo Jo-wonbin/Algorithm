@@ -9,9 +9,8 @@ public class Main {
 
     static int M, N;
     static int[][] houseOfBee;
-    static int[][] BeforeHouse;
-    static int[] dx = {0, 0, -1, 1};
-    static int[] dy = {-1, 1, 0, 0};
+    static int[] dx = {0, -1, -1};
+    static int[] dy = {-1, -1, 0};
 
     public static void main(String[] args) throws IOException {
 
@@ -22,42 +21,34 @@ public class Main {
         N = Integer.parseInt(st.nextToken());
 
         houseOfBee = new int[M][M];
-        BeforeHouse = new int[M][M];
 
-        for (int i = 0; i < M; i++) {
-            Arrays.fill(houseOfBee[i], 1);
-            Arrays.fill(BeforeHouse[i], 1);
-        }
+        ArrayList<Integer> growth = new ArrayList<>();
 
-        int growth[][] = new int[N][2 * M - 1];
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             int zero = Integer.parseInt(st.nextToken());
             int one = Integer.parseInt(st.nextToken());
             int two = Integer.parseInt(st.nextToken());
 
-            int cnt = zero + one;
-            int index = zero;
-            while (index < cnt) {
-                growth[i][index] = 1;
-                index++;
-            }
-            cnt += two;
-            while (index < cnt) {
-                growth[i][index] = 2;
-                index++;
-            }
+            for (int j = 0; j < zero; j++)
+                growth.add(0);
+            for (int j = 0; j < one; j++)
+                growth.add(1);
+            for (int j = 0; j < two; j++)
+                growth.add(2);
 
-            firstGrowUp(growth[i]);
-            secondGrowUp();
-            AfterToBeforeHouse();
+
+            firstGrowUp(growth);
+
+            growth.clear();
         }
 
+        secondGrowUp();
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < M; i++) {
             for (int j = 0; j < M; j++) {
-                sb.append(houseOfBee[i][j]).append(" ");
+                sb.append(houseOfBee[i][j] + 1).append(" ");
             }
             sb.append("\n");
         }
@@ -67,14 +58,14 @@ public class Main {
         br.close();
     }
 
-    private static void firstGrowUp(int growth[]) {
+    private static void firstGrowUp(ArrayList<Integer> growth) {
         int x = M - 1;
         int y = 0;
 
         int index = 0;
         while (index < 2 * M - 1) {
 
-            houseOfBee[x][y] += growth[index];
+            houseOfBee[x][y] += growth.get(index);
 
             if (x == 0) {
                 y++;
@@ -86,44 +77,12 @@ public class Main {
     }
 
     private static void secondGrowUp() {
-        int x = 1;
-        int y = 1;
-        int start = 2;
-        while (x <= M - 1 && y <= M - 1) {
-            findFourDirection(x, y);
 
-            if (start >= M)
-                break;
-
-            for (int i = start; i < M; i++) {
-                findFourDirection(x, i);
-                findFourDirection(i, y);
-            }
-            x++;
-            y++;
-            start++;
-        }
-    }
-
-    private static void findFourDirection(int x, int y) {
-        int sum = 0;
-        for (int h = 0; h < 4; h++) {
-            int nx = x + dx[h];
-            int ny = y + dy[h];
-
-            if (nx < 0 || ny < 0 || nx >= M || ny >= M)
-                continue;
-            sum = Math.max(houseOfBee[nx][ny] - BeforeHouse[nx][ny], sum);
-
-        }
-        houseOfBee[x][y] += sum;
-    }
-
-    private static void AfterToBeforeHouse() {
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < M; j++) {
-                BeforeHouse[i][j] = houseOfBee[i][j];
+        for (int i = 1; i < M; i++) {
+            for (int j = 1; j < M; j++) {
+                houseOfBee[i][j] = Math.max(houseOfBee[i + dx[0]][j + dy[0]], Math.max(houseOfBee[i + dx[1]][j + dy[1]], houseOfBee[i + dx[2]][j + dy[2]]));
             }
         }
     }
+
 }
