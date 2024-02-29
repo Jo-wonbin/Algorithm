@@ -21,14 +21,11 @@ public class Main {
 
         List<String> keySet = new ArrayList<>(map.keySet());
 
-        keySet.sort(new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                if (map.get(o1) == (map.get(o2))) {
-                    return o1.compareTo(o2);
-                }
-                return map.get(o2).compareTo(map.get(o1));
+        keySet.sort((o1, o2) -> {
+            if (map.get(o1) == (map.get(o2))) {
+                return o1.compareTo(o2);
             }
+            return map.get(o2).compareTo(map.get(o1));
         });
 
         System.out.println(keySet.get(0));
