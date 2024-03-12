@@ -84,8 +84,7 @@ public class Main {
 
                     if (nx < 0 || ny < 0 || nx > N - 1 || ny > M - 1) {
                         result = Math.min(result, now.cnt);
-                        possible = true;
-                        continue;
+                        return true;
                     }
                     if (visited[nx][ny])
                         continue;
